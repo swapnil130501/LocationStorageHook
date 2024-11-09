@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import useLocationStorage from './hooks/useLocationStorage'
 import useDebouncedState from './hooks/useDebouncedState'
+import useFetch from './hooks/useFetch'
 
 function App() {
   const [count, setCount] = useLocationStorage('count', 0);
@@ -13,6 +14,8 @@ function App() {
   useEffect(() => {
     console.log(search);
   }, [search])
+
+  const [data, error] = useFetch('https://jsonplaceholder.typicode.com/todos/1');
 
   return (
     <>
@@ -41,6 +44,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+        <div>
+            {data.userId}
+        </div>
     </>
   )
 }
