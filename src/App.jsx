@@ -46,7 +46,7 @@ function App() {
       </p>
 
         <div>
-            {data.userId}
+        {data ? <div>User ID: {data.userId}</div> : <div>Loading...</div>}
         </div>
     </>
   )
