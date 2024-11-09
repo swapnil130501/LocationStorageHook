@@ -15,7 +15,7 @@ function App() {
     console.log(search);
   }, [search])
 
-  const [data, error] = useFetch('https://jsonplaceholder.typicode.com/todos/1');
+  const [data, error] = useFetch('https://jsonplaceholder.typicode.com/todos/3');
 
   return (
     <>
