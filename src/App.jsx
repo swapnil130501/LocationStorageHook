@@ -5,17 +5,21 @@ import './App.css'
 import useLocationStorage from './hooks/useLocationStorage'
 import useDebouncedState from './hooks/useDebouncedState'
 import useFetch from './hooks/useFetch'
+import usePrevious from './hooks/usePrevious'
+import useCustomEffect from './hooks/useCustomEffect'
 
 function App() {
   const [count, setCount] = useLocationStorage('count', 0);
+  const [count1, setCount1] = useState(0);
+  const prevCount = usePrevious(count)
 //  const [nonDebouncedState, setNonDebouncedState] = useState();
     const [search, setSearch] = useDebouncedState('', 3000);
+    
+  useCustomEffect(() => {
+    console.log("custom useEffect called on mounting");
+  }, [count1])
 
-  useEffect(() => {
-    console.log(search);
-  }, [search])
-
-  const [data, error] = useFetch('https://jsonplaceholder.typicode.com/todos/3');
+  //const [data, error] = useFetch('https://jsonplaceholder.typicode.com/todos/3');
 
   return (
     <>
@@ -31,6 +35,8 @@ function App() {
       <div className="card">
         <button onClick={() => setCount( count + 1)}>
           count is {count}
+          <br></br>
+          prev count is {prevCount}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
@@ -45,9 +51,9 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-        <div>
+        {/* <div>
         {data ? <div>User ID: {data.userId}</div> : <div>Loading...</div>}
-        </div>
+        </div> */}
     </>
   )
 }

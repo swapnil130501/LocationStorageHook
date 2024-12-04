@@ -60,3 +60,22 @@ export default function useFetch(url) {
 
     return [data, error];
 }
+
+/**
+ * DOM, CSSOM(blocking), BOM, Render tree, reflow/ layout, painting
+ * 
+ * painting: the process of rendering pixels for each element based on their calculations, style and other info 
+ * it involves redering content, background, border and other visual properties
+ * css box model - 
+ * content -> padding -> border -> margin
+ * border box, content box
+ * flex-box
+ * flex-direction: row
+ * flex-wrap: nowrap
+ * flex-flow: row nowrap
+ * main axis, cross axis
+ * justify-content: ...
+ * align items: start.... arrange elements on cross-axis
+ * flex-basis: 100px(given to child)
+ * flex-grow: 1
+ */
